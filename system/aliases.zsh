@@ -1,10 +1,23 @@
-# grc overides for ls
-#   Made possible through contributions from generous benefactors like
-#   `brew install coreutils`
-if $(gls &>/dev/null)
-then
-  alias ls="gls -F --color"
-  alias l="gls -lAh --color"
-  alias ll="gls -l --color"
-  alias la='gls -A --color'
-fi
+alias ls='ls -G'
+
+function svndi {
+    if [ -d .svn ]; then
+        svn diff $* | colordiff | less -R 
+    fi
+}
+
+# some more ls aliases
+alias ll='ls -l -h'
+alias la='ls -A -h'
+alias l='ls -CF'
+alias chmodsh='chmod +x *.sh *.py *.pl'
+
+# week number
+alias week='date +%W'
+
+# grep without .svn/ debian/ and other
+alias grep="grep --exclude-dir=.svn --exclude-dir=debian --exclude=_*.css --exclude=_*.js"
+alias rgrep="ack"
+
+# calc
+calc(){ awk "BEGIN{ print $* }" ;}
