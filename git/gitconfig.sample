@@ -15,7 +15,9 @@
 [alias]
     st = status
     ci = commit
+    cim = commit -m
     cia = commit -a
+    ciam = commit -a -m
     br = branch
     bra = branch -a
     cob = checkout -b
@@ -39,13 +41,21 @@
     branch = auto
 [color "diff"]
     whitespace = red reverse
-    [core]
+[core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     autocrlf=input
     excludesfile = ~/.gitignore
 [apply]
     whitespace = nowarn
-[mergetool]
-    keepBackup = false
 [branch]
     autosetupmerge = true
+[mergetool]
+    keepBackup = false
+[merge "dpkg-mergechangelogs"]
+    name = debian/changelog merge driver
+    driver = dpkg-mergechangelogs -m %O %A %B %A
+[merge "merge-ChangeLog"]
+    name = GNU-style ChangeLog merge driver
+    driver = git-merge-changelog %O %A %B
+[push]
+    default = current
