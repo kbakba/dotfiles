@@ -7,24 +7,45 @@
 # can symlink ~/.gitconfig to this file and go rock out with your git out!
 
 [user]
-        name = Zach Holman
-        email = your@example.com
-[alias]
-        co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributers = !$ZSH/bin/git-rank-contributers
-        count   = !git shortlog -sn
-[color]
-        diff = auto
-        status = auto
-        branch = auto
-[core]
-        excludesfile = ~/.gitignore
-        editor = mate -w
-[apply]
-        whitespace = nowarn
+    name = 
+    email = 
 [github]
-        user = holman
+    user = 
+
+[alias]
+    st = status
+    ci = commit
+    cia = commit -a
+    br = branch
+    bra = branch -a
+    cob = checkout -b
+    di = diff --color-words
+    lg = log -p
+    mg = merge --no-commit --no-ff
+    h = help
+    up = pull
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    co = checkout
+    promote = !$ZSH/bin/git-promote
+    wtf     = !$ZSH/bin/git-wtf
+    rank-contributers = !$ZSH/bin/git-rank-contributers
+    count   = !git shortlog -sn
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+[color "diff"]
+    whitespace = red reverse
+    [core]
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    autocrlf=input
+    excludesfile = ~/.gitignore
+[apply]
+    whitespace = nowarn
 [mergetool]
-        keepBackup = false
+    keepBackup = false
+[branch]
+    autosetupmerge = true
