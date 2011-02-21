@@ -3,26 +3,26 @@ autoload colors && colors
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
 git_branch() {
-  echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 
 git_dirty() {
-  st=$(/usr/bin/git status 2>/dev/null | tail -n 1)
+  st=$(git status 2>/dev/null | tail -n 1)
   if [[ $st == "" ]]
   then
     echo ""
   else
     if [[ $st == "nothing to commit (working directory clean)" ]]
     then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo "git/%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
     else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      echo "git/%{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
     fi
   fi
 }
 
-git_prompt_info () {
- ref=$(/usr/bin/git symbolic-ref HEAD 2>/dev/null) || return
+git_prompt_info() {
+ ref=$(git symbolic-ref HEAD 2>/dev/null) || return
 # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
  echo "${ref#refs/heads/}"
 }
@@ -37,11 +37,11 @@ project_name_color () {
   echo "%{\e[0;35m%}${name}%{\e[0m%}"
 }
 
-unpushed () {
-  /usr/bin/git cherry -v origin/$(git_branch) 2>/dev/null
+unpushed() {
+    git cherry -v origin/$(git_branch) 2>/dev/null
 }
 
-need_push () {
+need_push() {
   if [[ $(unpushed) == "" ]]
   then
     echo " "
@@ -50,20 +50,15 @@ need_push () {
   fi
 }
 
-rvm_prompt(){
-  if $(which rvm &> /dev/null)
-  then
-	  echo "%{$fg_bold[yellow]%}$(rvm tools identifier)%{$reset_color%}"
-	else
-	  echo ""
-  fi
+host_and_username(){
+  echo "%{$fg_bold[green]%}%n@%m%{$reset_color%}"
 }
 
 directory_name(){
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[blue]%}%~%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rvm_prompt) in $(directory_name) $(project_name_color)$(git_dirty) $(need_push)\n› '
+export PROMPT=$'$(host_and_username):$(directory_name) $(project_name_color)$(git_dirty) $(need_push)\n\$ '
 set_prompt () {
   export RPROMPT=""
 }
