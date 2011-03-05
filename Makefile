@@ -4,7 +4,7 @@ HOME_DIR ?= ${HOME}
 
 install::
 	for file in **/*${SYMLINK_EXT}; do \
-		ln -shi $$PWD/$$file ${HOME_DIR}/.$${filename}`basename $$file ${SYMLINK_EXT}`; \
+		ln -sni $$PWD/$$file ${HOME_DIR}/.$${filename}`basename $$file ${SYMLINK_EXT}`; \
 	done
 
 .PHONY : install
