@@ -5,7 +5,13 @@ export ZSH=$HOME/.dotfiles
 export PROJECTS=~/Development
 
 # prefix for homebrew programs
-export BREW_PREFIX=`brew --prefix`
+brew &> /dev/null
+if [ $? -eq 0 ] 
+then
+  export BREW_PREFIX=$(brew --prefix)
+else
+  export BREW_PREFIX=""
+fi
 
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
