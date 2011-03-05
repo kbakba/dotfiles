@@ -5,11 +5,11 @@ It is fork [Zach Holman](http://github.com/holman)' [dotfiles](http://github.com
 ## dotfiles
 
 Your dotfiles are how you personalize your system. These are mine. The very
-prejudiced mix: OS X, Linux, zsh, Ruby, Rails, git, homebrew, rvm, vim. If you
+prejudiced mix: OS X, Linux, zsh, Ruby, Rails, git, homebrew, vim and etc. If you
 match up along most of those lines, you may dig my dotfiles.
 
 If you're interested in the philosophy behind why projects like these are
-awesome, you might want to [read my post on the
+awesome, you might want to [read Zach post on the
 subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
 ## install
