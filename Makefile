@@ -3,7 +3,7 @@ SYMLINK_EXT ?= .symlink
 COPY_EXT ?= .copy
 HOME_DIR ?= ${HOME}
 
-install:: copy
+install::
 	for file in **/*${SYMLINK_EXT}; do \
 		ln -sni $$PWD/$$file ${HOME_DIR}/.$${filename}`basename $$file ${SYMLINK_EXT}`; \
 	done
