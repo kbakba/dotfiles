@@ -1,1 +1,2 @@
-test -x /bin/zsh && exec /bin/zsh
+[ -z "$PS1" ] && return # If not running interactively, don't do anything
+[ -x /bin/zsh ] && exec /bin/zsh # If zsh exist run it
