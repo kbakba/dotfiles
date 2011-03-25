@@ -1,5 +1,3 @@
-alias ls='ls -G'
-
 function svndi {
     if [ -d .svn ]; then
         svn diff $* | colordiff | less -R 
