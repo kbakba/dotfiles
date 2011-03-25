@@ -59,10 +59,15 @@ directory_name(){
 }
 
 export PROMPT=$'$(host_and_username):$(directory_name) $(project_name_color)$(git_dirty) $(need_push)\n\$ '
-set_prompt () {
+set_prompt() {
   export RPROMPT=""
 }
 
 precmd() {
   set_prompt
 }
+case $TERM in
+    xterm* | rxvt)
+        precmd(){print -Pn "\e]0;%n@%m: %~\a"}
+    ;;
+esac
