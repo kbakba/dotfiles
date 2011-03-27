@@ -3,7 +3,7 @@ autoload colors && colors
 # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
 git_branch() {
-  echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  echo $(git symbolic-ref HEAD 2>/dev/null | awk -F/ '{print $NF}')
 }
 
 git_dirty() {
@@ -27,12 +27,12 @@ git_prompt_info() {
  echo "${ref#refs/heads/}"
 }
 
-project_name () {
+project_name() {
   name=$(pwd | awk -F'Development/' '{print $2}' | awk -F/ '{print $1}')
   echo $name
 }
 
-project_name_color () {
+project_name_color() {
 #  name=$(project_name)
   echo "%{\e[0;35m%}${name}%{\e[0m%}"
 }
@@ -50,11 +50,11 @@ need_push() {
   fi
 }
 
-host_and_username(){
+host_and_username() {
   echo "%{$fg_bold[green]%}%n@%m%{$reset_color%}"
 }
 
-directory_name(){
+directory_name() {
   echo "%{$fg_bold[blue]%}%~%{$reset_color%}"
 }
 
