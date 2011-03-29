@@ -1,7 +1,7 @@
 # Sample gitconfig
 
 [user]
-    name = Alexey Ostapenko
+    name = Aleksey Ostapenko
     email = kbakba@kbakba.net
 [github]
     user = kbakba
