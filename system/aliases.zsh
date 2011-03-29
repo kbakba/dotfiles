@@ -14,8 +14,7 @@ alias chmodsh='chmod +x *.sh *.py *.pl'
 alias week='date +%W'
 
 # grep without .svn/ debian/ and other
-alias grep="grep --exclude-dir=.svn --exclude-dir=debian --exclude=_*.css --exclude=_*.js"
-alias rgrep="ack"
+alias rgrep="ack --exclude-dir=.svn --exclude-dir=debian --exclude=_*.css --exclude=_*.js"
 
 # calc
 calc(){ awk "BEGIN{ print $* }" ;}
