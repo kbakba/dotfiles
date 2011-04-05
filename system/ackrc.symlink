@@ -1,0 +1,5 @@
+--ignore-dir=debian
+--color-filename=magenta
+--sort-files
+
+--type-set=ys=.xml.ys
