@@ -5,3 +5,4 @@ export GREP_OPTIONS="--exclude="\*/.svn/\*" --color "
 export EDITOR=vim
 
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
+[ -x "$( which most )" ] && export PAGER=most
