@@ -3,3 +3,4 @@
 --sort-files
 
 --type-set=ys=.xml.ys
+--type-set=xsl=.xsl
