@@ -2,5 +2,6 @@
 --color-filename=magenta
 --sort-files
 
+--type-set=xsl=.xsl .xslt
 --type-set=ys=.xml.ys
 --type-set=xsl=.xsl
