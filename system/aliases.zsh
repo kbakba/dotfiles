@@ -1,9 +1,3 @@
-function svndi {
-    if [ -d .svn ]; then
-        svn diff $* | colordiff | less -R 
-    fi
-}
-
 # some more ls aliases
 alias ll='ls -l -h'
 alias la='ls -A -h'
@@ -18,4 +12,11 @@ alias week='date +%W'
 alias rgrep="ack-grep"
 
 # calc
-calc(){ awk "BEGIN{ print $* }" ;}
+function calc { awk "BEGIN{ print $* }" ;}
+
+# svn
+function svndi {
+    if [ -d .svn ]; then
+        svn diff $* | colordiff | less -R 
+    fi
+}
