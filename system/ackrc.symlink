@@ -1,4 +1,5 @@
 --ignore-dir=debian
+--ignore-dir=lego
 --color-filename=magenta
 --sort-files
 
