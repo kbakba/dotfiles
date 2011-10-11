@@ -14,7 +14,4 @@ _*.js
 *.*.changes
 *.*.build
 *.*.deb
-*.*.tar.gz
-*package/source/debian/yandex-fotki-www*
-*swf/foto-uploader*
-xml/build.xml
+*.*.tar.gz*
