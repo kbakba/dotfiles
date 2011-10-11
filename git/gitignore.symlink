@@ -15,3 +15,4 @@ _*.js
 *.*.build
 *.*.deb
 *.*.tar.gz*
+.rake_tasks~
