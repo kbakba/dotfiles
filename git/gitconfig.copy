@@ -53,3 +53,5 @@
     driver = git-merge-changelog %O %A %B
 [push]
     default = current
+[diff]
+    noprefix = true
