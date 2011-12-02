@@ -5,8 +5,7 @@ export ZSH=$HOME/.dotfiles
 export PROJECTS=~/Development
 
 # prefix for homebrew programs
-brew &> /dev/null
-if [ $? -eq 0 ] 
+if [ $(which brew) ]
 then
   export BREW_PREFIX=$(brew --prefix)
 else
