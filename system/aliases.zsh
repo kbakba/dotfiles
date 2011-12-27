@@ -1,7 +1,11 @@
 # some more ls aliases
-alias ll='ls -l -h'
-alias la='ls -A -h'
-alias l='ls -CF'
+LS=ls
+
+ls --color &> /dev/null; if [ $? -eq 0 ] ; then LS='ls --color=auto ' ; fi
+
+alias ll=$LS' -l -h'
+alias la=$LS' -A -h'
+alias l=$LS' -CF'
 alias chmodsh='chmod +x *.sh *.py *.pl'
 alias cpf='rsync --progress'
 
@@ -17,6 +21,6 @@ function calc { awk "BEGIN{ print $* }" ;}
 # svn
 function svndi {
     if [ -d .svn ]; then
-        svn diff $* | colordiff | less -R 
+        svn diff $* | colordiff | less -R
     fi
 }
