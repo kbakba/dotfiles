@@ -1,5 +1,7 @@
 alias dotmate='mate $ZSH'
+alias dotsubl='subl $ZSH'
 alias dotcd='cd $ZSH'
+alias dotvim='vim $ZSH'
 
 alias reload!='. ~/.zshrc'
 
