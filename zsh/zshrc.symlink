@@ -5,12 +5,14 @@ export ZSH=$HOME/.dotfiles
 export PROJECTS=~/Development
 
 # prefix for homebrew programs
-if [ -f "$(which brew)" ]
-then
-  export BREW_PREFIX=$(brew --prefix)
-else
-  export BREW_PREFIX=""
-fi
+brew_prefix() {
+  local BREW_PREFIX=""
+  if [ -f "$(which brew)" ]
+  then
+    local BREW_PREFIX=$(brew --prefix $1)
+  fi
+  echo $BREW_PREFIX
+}
 
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
