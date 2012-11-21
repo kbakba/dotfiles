@@ -8,17 +8,18 @@ git_branch() {
 
 git_dirty() {
   st=$(git status 2>/dev/null | tail -n 1)
-  if [[ $st == "" ]]
-  then
-    echo ""
-  else
-    if [[ $st == "nothing to commit (working directory clean)" ]]
-    then
-      echo "git:%{$fg_no_bold[green]%}$(git_prompt_info)%{$reset_color%}"
-    else
-      echo "git:%{$fg_no_bold[red]%}$(git_prompt_info)%{$reset_color%}"
-    fi
-  fi
+  pattern="nothing to commit*"
+
+  case "$st" in
+    "")
+      echo "" ;;
+    "nothing to commit (working directory clean)")
+      echo "git:%{$fg_no_bold[green]%}$(git_prompt_info)%{$reset_color%}" ;;
+    "nothing to commit, working directory clean")
+      echo "git:%{$fg_no_bold[green]%}$(git_prompt_info)%{$reset_color%}" ;;
+    *)
+      echo "git:%{$fg_no_bold[red]%}$(git_prompt_info)%{$reset_color%}" ;;
+  esac
 }
 
 git_prompt_info() {
