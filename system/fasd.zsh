@@ -1,0 +1,1 @@
+[ -x "$( which fasd )" ] && eval "$(fasd --init auto)"
