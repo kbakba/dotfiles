@@ -28,16 +28,6 @@ git_prompt_info() {
  echo "${ref#refs/heads/}"
 }
 
-project_name() {
-  name=$(pwd | awk -F'Development/' '{print $2}' | awk -F/ '{print $1}')
-  echo $name
-}
-
-project_name_color() {
-#  name=$(project_name)
-  echo "%{\e[0;35m%}${name}%{\e[0m%}"
-}
-
 unpushed() {
     git cherry -v origin/$(git_branch) 2>/dev/null
 }
@@ -59,7 +49,7 @@ directory_name() {
   echo "%{$fg_bold[blue]%}%~%{$reset_color%}"
 }
 
-export PROMPT=$'$(host_and_username):$(directory_name) $(project_name_color)$(git_dirty) $(need_push)\n\$ '
+export PROMPT=$'$(host_and_username):$(directory_name) $(git_dirty) $(need_push)\n\$ '
 set_prompt() {
   export RPROMPT=""
 }
