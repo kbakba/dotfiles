@@ -57,3 +57,16 @@
     default = current
 [diff]
     noprefix = true
+
+# Host aliases
+[url "git@github.com:"]
+    pushInsteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+    insteadOf = "gh:"
+    insteadOf = "github:"
+
+[url "git@bitbucket.org:"]
+    insteadOf = "bb:"
+    insteadOf = "bitbucket:"
