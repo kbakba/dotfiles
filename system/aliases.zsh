@@ -3,6 +3,9 @@ LS=ls
 
 ls --color &> /dev/null; if [ $? -eq 0 ] ; then LS='ls --color=auto ' ; fi
 
+alias ..='cd ..'
+alias ...='cd ../../'
+
 alias ll=$LS' -l -h'
 alias la=$LS' -A -h'
 alias l=$LS' -CF'
