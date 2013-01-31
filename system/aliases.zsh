@@ -27,3 +27,8 @@ function svndi {
         svn diff $* | colordiff | less -R
     fi
 }
+
+function touchp {
+    mkdir -p $( dirname $1 )
+    touch $1
+}
