@@ -32,3 +32,10 @@ function touchp {
     mkdir -p $( dirname $1 )
     touch $1
 }
+
+# Watch last command
+# TODO: remove wtch from HISTORY
+function wtch {
+    LAST_COMMAND=` history -n -1 `
+    watch -n ${1:=10} $LAST_COMMAND
+}
