@@ -5,7 +5,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 # https://bitbucket.org/psagers/virtualenv-sh
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+if [ -f /usr/local/bin/virtualenv-sh.zsh -o -f /usr/local/bin/virtualenv-sh.zwc ]; then
     # Configure all virtualenv-sh functions for autoloading
     fpath=(/usr/local/bin/virtualenv-sh $fpath)
     autoload -w /usr/local/bin/virtualenv-sh
