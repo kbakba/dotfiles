@@ -14,7 +14,7 @@
     ciam = commit -a -m
     br = branch
     bra = branch -a
-    cob = checkout -b
+    cob = checkout -B
     di = diff --color-words
     lg = log -p
     mg = merge --no-commit --no-ff
@@ -30,31 +30,68 @@
     count   = !git shortlog -sn
     rh = reset --hard
     rs = reset --soft
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
+    # Credit an author on the latest commit
+    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+    # Interactive rebase with the given number of latest commits
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
+    # Find tags containing commit
+    ft = "!f() { git describe --always --contains $1; }; f"
+    # Find commits by source code
+    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+    # Remove branches that have already been merged with master
+    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
 [color]
     ui = true
     diff = auto
     status = auto
     branch = auto
+
 [color "diff"]
     whitespace = red reverse
+
+[color "status"]
+    untracked = cyan
+
 [core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     autocrlf=input
+    attributesfile = ~/.gitattributes
     excludesfile = ~/.gitignore
+
 [apply]
     whitespace = nowarn
+
 [branch]
     autosetupmerge = true
+
 [mergetool]
     keepBackup = false
+
 [merge "dpkg-mergechangelogs"]
     name = debian/changelog merge driver
     driver = dpkg-mergechangelogs -m %O %A %B %A
+
 [merge "merge-ChangeLog"]
     name = GNU-style ChangeLog merge driver
     driver = git-merge-changelog %O %A %B
+
 [push]
     default = current
+
 [diff]
     noprefix = true
 
