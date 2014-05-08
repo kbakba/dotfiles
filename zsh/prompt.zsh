@@ -7,19 +7,17 @@ git_branch() {
 }
 
 git_dirty() {
-  st=$(git status 2>/dev/null | tail -n 1)
-  pattern="nothing to commit*"
-
-  case "$st" in
-    "")
-      echo "" ;;
-    "nothing to commit (working directory clean)")
-      echo "git:%{$fg_no_bold[green]%}$(git_prompt_info)%{$reset_color%}" ;;
-    "nothing to commit, working directory clean")
-      echo "git:%{$fg_no_bold[green]%}$(git_prompt_info)%{$reset_color%}" ;;
-    *)
-      echo "git:%{$fg_no_bold[red]%}$(git_prompt_info)%{$reset_color%}" ;;
-  esac
+  st=$(git status 2>/dev/null)
+  if [[ $st != "" ]]
+  then
+    st=$(git status 2>/dev/null | tail -n 1)
+    case "$st" in
+    "nothing to commit"*)
+        echo "git:%{$fg_no_bold[green]%}$(git_prompt_info)%{$reset_color%}" ;;
+      *)
+        echo "git:%{$fg_no_bold[red]%}$(git_prompt_info)%{$reset_color%}" ;;
+    esac
+  fi
 }
 
 git_prompt_info() {
