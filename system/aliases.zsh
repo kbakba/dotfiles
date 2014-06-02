@@ -11,6 +11,7 @@ alias la=$LS' -A -h'
 alias l=$LS' -CF'
 alias chmodsh='chmod +x *.sh *.py *.pl'
 alias cpf='rsync --progress'
+alias rm="rm -i"
 
 # week number
 alias week='date +%W'
