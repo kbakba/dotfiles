@@ -33,9 +33,9 @@ unpushed() {
 need_push() {
   if [[ $(unpushed) == "" ]]
   then
-    echo " "
+    echo ""
   else
-    echo "with %{$fg_bold[magenta]%}unpushed%{$reset_color%}"
+    echo "with %{$fg_bold[magenta]%}!%{$reset_color%}"
   fi
 }
 
@@ -47,7 +47,12 @@ directory_name() {
   echo "%{$fg_bold[blue]%}%~%{$reset_color%}"
 }
 
-export PROMPT=$'$(host_and_username):$(directory_name) $(git_dirty) $(need_push)\n\$ '
+VIRTUAL_ENV_DISABLE_PROMPT=1
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo "/ %{$fg_bold[yellow]%}${VIRTUAL_ENV##*/}%{$reset_color%}"
+}
+
+export PROMPT=$'$(host_and_username):$(directory_name) $(git_dirty)$(need_push) $(virtualenv_info)\n\$ '
 set_prompt() {
   export RPROMPT=""
 }
