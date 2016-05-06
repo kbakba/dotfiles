@@ -2,7 +2,6 @@
 .cvs
 .eprj
 .hg*
-static/*
 js/c/*
 *.mine
 _*.css
