@@ -4,11 +4,18 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Development
 
+# Usage: exists <command>
+#
+# Returns 0 if the <command> is available. Returns 1 otherwise. It can be a
+# binary in the PATH or a shell function.
+exists() {
+  type "$1" &>/dev/null
+}
+
 # prefix for homebrew programs
 brew_prefix() {
   local BREW_PREFIX=""
-  if [ -f "$(which brew)" ]
-  then
+  if exists brew ; then
     local BREW_PREFIX=$(brew --prefix $1)
   fi
   echo $BREW_PREFIX
@@ -19,11 +26,12 @@ for config_file ($ZSH/**/*.zsh) source $config_file
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
+if [[ -a ~/.localrc ]] ; then
   source ~/.localrc
 fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -Uz compinit
 compinit
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
