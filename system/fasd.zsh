@@ -1,1 +1,3 @@
-[ -x "$( which fasd )" ] && eval "$(fasd --init auto)"
+if exists fasd; then
+    eval "$(fasd --init auto)"
+fi

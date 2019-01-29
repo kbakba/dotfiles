@@ -1,8 +1,7 @@
 # GRC colorizes nifty unix tools all over the place
-GRC=`which grc`
-if [ "$TERM" != dumb ] && [ -f $GRC ]
-then
-    alias colourify="$GRC -es --colour=auto"
+
+if [ "$TERM" != dumb ] && exists grc ; then
+    alias colourify="grc -es --colour=auto"
     alias configure='colourify ./configure'
     alias diff='colourify diff'
 #    alias make='colourify make'

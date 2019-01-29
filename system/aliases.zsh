@@ -43,3 +43,12 @@ function wtch {
     LAST_COMMAND=` history -n -1 `
     watch -n ${1:=10} $LAST_COMMAND
 }
+
+# Docker
+function docker-clean-images {
+    docker rmi $(docker images -f 'dangling=true' -q)
+}
+
+function docker-clean-conteiners {
+    docker rm $(docker ps -a -q)
+}

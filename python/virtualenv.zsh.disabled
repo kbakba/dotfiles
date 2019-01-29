@@ -6,15 +6,12 @@ if [ -f /usr/local/bin/virtualenv-sh.zsh -o -f /usr/local/bin/virtualenv-sh.zwc 
 
     # Call the main initialization function
     virtualenv_sh_init
-
-    # init autoworkon
-    autoload -U add-zsh-hook
-    add-zsh-hook chpwd autoworkon
 fi
 
 # Use virtualenvwrapper http://pypi.python.org/pypi/virtualenvwrapper
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
+    python -c "import sys; print '\n'.join(sys.path)"
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 

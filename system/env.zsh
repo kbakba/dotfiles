@@ -5,4 +5,7 @@ export GREP_OPTIONS="--exclude="\*/.svn/\*" --color "
 export EDITOR=vim
 
 [ -x /usr/bin/lesspipe.sh ] && eval "$(lesspipe.sh)"
-[ -x "$( which most )" ] && export MANPAGER=most
+
+if exists most ; then
+    export MANPAGER=most
+fi
