@@ -30,6 +30,7 @@
     count   = !git shortlog -sn
     rh = reset --hard
     rs = reset --soft
+    patch = --no-pager diff --no-color
 [color]
     ui = true
     diff = auto
@@ -38,9 +39,10 @@
 [color "diff"]
     whitespace = red reverse
 [core]
-    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    autocrlf=input
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    autocrlf = input
     excludesfile = ~/.gitignore
+    pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [apply]
     whitespace = nowarn
 [branch]

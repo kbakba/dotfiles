@@ -4,8 +4,6 @@
 .hg*
 js/c/*
 *.mine
-_*.css
-_*.js
 *.ys.status
 
 *.*.dsc
@@ -15,3 +13,19 @@ _*.js
 *.*.deb
 *.*.tar.gz*
 .rake_tasks~
+
+# Direnv stuff
+.direnv
+.envrc
+
+# OSX generated files
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*~
+*.swp
+*.swo
+*.sublime-*
+.vscode
