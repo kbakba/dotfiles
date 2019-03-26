@@ -31,6 +31,9 @@
     rh = reset --hard
     rs = reset --soft
     patch = --no-pager diff --no-color
+    edit-last-msg = commit --amend
+    change-last-msg = commit --amend --message
+    update-last-commit = commit --amend --no-edit
 [color]
     ui = true
     diff = auto
