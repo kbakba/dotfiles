@@ -1,4 +1,4 @@
-alias dotmate='mate $ZSH'
+alias dotcode='vscode $ZSH'
 alias dotsubl='subl $ZSH'
 alias dotcd='cd $ZSH'
 alias dotvim='vim $ZSH'
