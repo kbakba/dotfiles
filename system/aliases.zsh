@@ -16,11 +16,8 @@ alias rm="rm -i"
 # week number
 alias week='date +%W'
 
-# grep without .svn/ debian/ and other
-alias rgrep="ack-grep"
-
-# vimv for Sublime Editor
-alias smv='vimv -e subl'
+# ripgrep
+alias rgrep="rg"
 
 # calc
 function calc { awk "BEGIN{ print $* }" ;}
