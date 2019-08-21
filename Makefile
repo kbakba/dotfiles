@@ -13,6 +13,13 @@ install::
 		fi \
 	done
 
+	for file in `find config -type f` ; do \
+		filename=`basename $$file`; \
+		dir=${HOME_DIR}/.`dirname $$file`; \
+		test -d $$dir || mkdir -p $$dir; \
+		ln -snf $$PWD/$$file  $$dir/$$filename; \
+	done
+
 copy::
 	for file in **/*${COPY_EXT}; do \
 		cp -ri $$PWD/$$file ${HOME_DIR}/.`basename $$file ${COPY_EXT}`; \
