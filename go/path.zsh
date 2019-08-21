@@ -1,5 +1,5 @@
 export GOPATH=$HOME/golang
-if [ -x "$( which go )" ]; then
+if exists go ; then
     export PATH=$PATH:$GOPATH/bin
 fi
 
