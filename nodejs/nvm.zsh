@@ -1,33 +1,16 @@
-if [ -s $(brew_prefix nvm)/nvm.sh ]; then
-    export NVM_DIR=$HOME/.nvm
-    export NODE_VERSIONS=$NVM_DIR/versions/node
+## Fast version from
+# https://gist.github.com/lukeshiru/e239528fbcc4bba9ae2ef406f197df0c
+if [ -s $(brew_prefix nvm)/nvm.sh ] && [ ! "$(type -f __init_nvm)" = function ]; then
+    export NVM_DIR="$HOME/.nvm"
+    export NODE_VERSIONS="$NVM_DIR/versions/node"
     export NODE_VERSION_PREFIX=v
-    source $(brew_prefix nvm)/nvm.sh
-
-    # from https://gist.github.com/fl0w/07ce79bd44788f647deab307c94d6922
-    #
-    # lazyload nvm
-    # all props goes to http://broken-by.me/lazy-load-nvm/
-    # grabbed from reddit @ https://www.reddit.com/r/node/comments/4tg5jg/lazy_load_nvm_for_faster_shell_start/
-
-    # lazynvm() {
-    #     unset -f nvm node npm
-    #     source $(brew_prefix nvm)/nvm.sh # This loads nvm
-    # }
-
-    # nvm() {
-    #     lazynvm
-    #     nvm $@
-    # }
-
-    # node() {
-    #     lazynvm
-    #     node $@
-    # }
-
-    # npm() {
-    #     lazynvm
-    #     npm $@
-    # }
-
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+    declare -a __node_commands=(nvm `find -L $NVM_DIR/versions/*/*/bin -type f -exec basename {} \; | sort -u`)
+    function __init_nvm() {
+        for i in "${__node_commands[@]}"; do unalias $i; done
+        source $(brew_prefix nvm)/nvm.sh
+        unset __node_commands
+        unset -f __init_nvm
+    }
+    for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
 fi
