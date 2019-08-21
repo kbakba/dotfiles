@@ -1,8 +1,0 @@
-#!/bin/sh -e
-GROWLNOTIFY=$( which growlnotify )
-COFFEE="coffee -b -w -c ."
-if [ -e $GROWLNOTIFY ] ; then
-    $COFFEE | xargs -I % $GROWLNOTIFY -t "CoffeScript maker" -m "%" &
-else
-    $COFFEE &
-fi
