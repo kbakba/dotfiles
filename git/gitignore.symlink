@@ -18,6 +18,9 @@ js/c/*
 .direnv
 .envrc
 
+# lefthook
+lefthook-local.yml
+
 # OSX generated files
 .DS_Store
 ehthumbs.db
