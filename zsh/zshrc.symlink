@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Development
+export PROJECTS=~/work
 
 # Usage: exists <command>
 #
@@ -24,14 +24,16 @@ brew_prefix() {
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
 
-# use .localrc for SUPER SECRET CRAP that you don't
+# use ~/.localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
-if [[ -a ~/.localrc ]] ; then
-  source ~/.localrc
-fi
+test -e ${HOME}/.localrc && source ${HOME}/.localrc
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -Uz compinit
 compinit
 
+# external completion
+test -e "${HOME}/bin/completion" && source ${HOME}/bin/completion/*
+
+# Iterm2 integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
