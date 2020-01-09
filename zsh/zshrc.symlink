@@ -12,6 +12,16 @@ exists() {
   type "$1" &>/dev/null
 }
 
+GET_TIME() {
+    if exists gdate; then
+        gdate +%s%3N
+    else
+        date +%s
+    fi
+}
+local START_TIME=$(GET_TIME);
+
+
 # prefix for homebrew programs
 brew_prefix() {
   local BREW_PREFIX=""
@@ -34,3 +44,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # use ~/.localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 test -e ${HOME}/.localrc && source ${HOME}/.localrc
+
+echo loading time: $(( $(GET_TIME) - $START_TIME ))
