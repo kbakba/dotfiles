@@ -12,10 +12,11 @@
     cim = commit -m
     cia = commit -a
     ciam = commit -a -m
-    br = branch
-    bra = branch -a
+    br = branch -vv
+    bra = branch -avv
     cob = checkout -b
-    di = diff --color-words
+    di = diff --color-words=.
+    diw = diff --ignore-all-space
     lg = log -p
     mg = merge --no-commit --no-ff
     h = help
@@ -31,6 +32,7 @@
     rh = reset --hard
     rs = reset --soft
     patch = --no-pager diff --no-color
+    clean-all="clean -dfx"
     edit-last-msg = commit --amend
     change-last-msg = commit --amend --message
     update-last-commit = commit --amend --no-edit
@@ -71,3 +73,7 @@
 [url "git@bitbucket.org:"]
     insteadOf = "bb:"
     insteadOf = "bitbucket:"
+[sequence]
+	editor = rebase-editor
+[status]
+	showUntrackedFiles = all
