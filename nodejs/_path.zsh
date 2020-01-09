@@ -1,3 +1,4 @@
+# Must be before nvm.zsh
 if exists npm ; then
     cd ~
     NPM_BIN=`npm bin`

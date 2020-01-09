@@ -11,8 +11,8 @@ if exists peco; then
     zle -N peco_select_history
     bindkey '^R' peco_select_history
 
-    git config --replace-all alias.br '!git branch | fgrep -v "* " | peco --layout=bottom-up | xargs git checkout'
-    git config --replace-all alias.bra '!git branch --remotes | sed -e "s#origin/##" | peco --layout=bottom-up | xargs git checkout'
+    git config --global --replace-all alias.br '!git branch | fgrep -v "* " | peco --layout=bottom-up | xargs git checkout'
+    git config --global --replace-all alias.bra '!git branch --remotes | sed -e "s#origin/##" | peco --layout=bottom-up | xargs git checkout'
 
     # [alias]
     #   ad = "!git ls-files --modified --others --exclude-standard | peco --initial-filter=Fuzzy | xargs -r git add --"
