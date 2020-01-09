@@ -1,8 +1,3 @@
-alias dotcode='vscode $ZSH'
-alias dotsubl='subl $ZSH'
-alias dotcd='cd $ZSH'
-alias dotvim='vim $ZSH'
-
 alias reload!='. ~/.zshrc'
 
 alias -g L='| less'
@@ -15,11 +10,3 @@ alias -g T='| tail'
 alias -g S='| sort'
 alias -g SU='| sort --unique'
 alias -g WC='| wc -l'
-
-alias s=subl
-alias g=git
-alias sdir='EDITOR=subl && vidir'
-alias d='docker'
-
-lcd() {cd "$1" && ls}
-mcd() { mkdir "$1" && cd $1 }
