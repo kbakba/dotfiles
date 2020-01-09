@@ -22,7 +22,7 @@ function wtch {
 }
 
 # ripgrep
-alias rgrep="rg"
+alias rgrep='rg'
 
 # docker
 alias d='docker'
