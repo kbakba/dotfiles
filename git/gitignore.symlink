@@ -20,6 +20,8 @@ js/c/*
 
 # lefthook
 lefthook-local.yml
+.githooks-local
+
 
 # OSX generated files
 .DS_Store
