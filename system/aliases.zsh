@@ -3,9 +3,6 @@ alias chmodsh='chmod +x *.sh *.py *.pl'
 alias cpf='rsync --progress'
 alias rm="rm -i"
 
-# week number
-alias week='date +%W'
-
 # calc
 function calc { awk "BEGIN{ print $* }" ;}
 
@@ -21,8 +18,9 @@ function wtch {
     watch -n ${1:=10} $LAST_COMMAND
 }
 
-# ripgrep
-alias rgrep='rg'
+# sift
+alias rgrep='sift'
+alias rg='sift'
 
 # docker
 alias d='docker'
