@@ -25,6 +25,11 @@ copy::
 		cp -ri $$PWD/$$file ${HOME_DIR}/.`basename $$file ${COPY_EXT}`; \
 	done
 
+brew::
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	brew bundle
+	brew bundle --file .dotfiles/Brewfile_opt
+
 .PHONY : install
 .DEFAULT : install
 .SILENT : install copy
