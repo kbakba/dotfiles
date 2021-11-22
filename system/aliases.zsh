@@ -2,6 +2,7 @@
 alias chmodsh='chmod +x *.sh *.py *.pl'
 alias cpf='rsync --progress'
 alias rm="rm -i"
+alias sort="LC_ALL=C sort"
 
 # calc
 function calc { awk "BEGIN{ print $* }" ;}
