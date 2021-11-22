@@ -1,2 +1,2 @@
-export DEBFULLNAME="Aleksey Ostapenko"
+export DEBFULLNAME="Aleksey KBAKBA"
 export DEBEMAIL="kbakba@"
