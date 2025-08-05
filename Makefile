@@ -28,7 +28,7 @@ copy::
 brew::
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 	brew bundle
-	brew bundle --file .dotfiles/Brewfile_opt
+	brew bundle --file Brewfile_opt
 
 .PHONY : install
 .DEFAULT : install
