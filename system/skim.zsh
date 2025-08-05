@@ -1,7 +1,7 @@
 if exists sk; then
     # History
     function skim_select_history() {
-        BUFFER=$(fc -l -n 1 | sk --tac --query "$LBUFFER")
+        BUFFER=$(fc -l -n 1 | sk --query "$LBUFFER")
         CURSOR=$#BUFFER         # move cursor
         zle -R -c               # refresh
     }

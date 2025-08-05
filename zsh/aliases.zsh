@@ -1,5 +1,7 @@
 alias reload!='. ~/.zshrc'
 
+alias vscode='code'
+
 alias -g L='| less'
 alias -g L='| less'
 alias -g G='| grep'

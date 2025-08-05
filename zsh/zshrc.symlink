@@ -46,3 +46,21 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 test -e ${HOME}/.localrc && source ${HOME}/.localrc
 
 echo loading time: $(( $(GET_TIME) - $START_TIME ))
+
+# OPS config
+export OPS_DIR="$HOME/.ops"
+export PATH="$HOME/.ops/bin:$PATH"
+#source "$HOME/.ops/scripts/bash_completion.sh"
+#autoload bashcompinit
+
+# The next line updates PATH for the Google Cloud SDK.
+#if [ -f '/Users/kbakba/work/try/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kbakba/work/try/gcloud/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+#if [ -f '/Users/kbakba/work/try/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kbakba/work/try/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/kbakba/.lmstudio/bin"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+export PATH="$HOME/.local/bin:$PATH"
