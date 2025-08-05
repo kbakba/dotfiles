@@ -1,5 +1,12 @@
 # Sample gitconfig
 
+[includeIf "gitdir:~/"]
+    path = ~/.dotconfig/git/gitconfig-github
+[includeIf "gitdir:~/work"]
+    path = ~/work/.gitconfig
+[github]
+    user = kbakba
+
 [user]
     name = Aleksey Ostapenko
     email = github@kbakba.net
@@ -12,9 +19,10 @@
     cim = commit -m
     cia = commit -a
     ciam = commit -a -m
-    br = branch -vv
-    bra = branch -avv
-    cob = checkout -b
+    br = !git branch | fgrep -v '* ' | sk --ansi --cycle --height 45% | xargs git checkout
+    bra = "!git branch --remotes | sed -e 's#origin/##' | sk --ansi --cycle --height 45% | xargs git checkout"
+    cob = switch -b
+    sw = switch
     di = diff --color-words=.
     diw = diff --ignore-all-space
     lg = log -p
@@ -36,30 +44,30 @@
     edit-last-msg = commit --amend
     change-last-msg = commit --amend --message
     update-last-commit = commit --amend --no-edit
+
+    dlog = -c diff.external=difft log --ext-diff
+    dshow = -c diff.external=difft show --ext-diff
+    ddiff = -c diff.external=difft diff
 [color]
     ui = true
     diff = auto
     status = auto
     branch = auto
-[color "diff"]
-    whitespace = red reverse
 [core]
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     autocrlf = input
     excludesfile = ~/.gitignore
-    pager = diff-so-fancy | less --tabs=4 -RFX
 [apply]
     whitespace = nowarn
 [branch]
     autosetuprebase = always
-[pull]
-    rebase = preserve #(this is a very recent and useful addition that appeared in git 1.8.5)
+    sort = -committerdate
+[tag]
+    sort = version:refname
 [push]
-    default = current
-[diff]
-    noprefix = true
-[mergetool]
-    keepBackup = false
+    default = matching
+    autoSetupRemote = true
+    followtags = true
 
 # Host aliases
 [url "git@github.com:"]
@@ -73,7 +81,77 @@
 [url "git@bitbucket.org:"]
     insteadOf = "bb:"
     insteadOf = "bitbucket:"
+
+# VSCode as merge tool
+[mergetool]
+    keepBackup = false
+[mergetool "vscode"]
+# Comment: Original way before three-way merge shown commented out
+#    cmd = code --wait $MERGED
+# Comment: For "Three-way merge"
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+# Comment: End of "Extra Block"
+
+[delta]
+    # [git-delta](https://github.com/dandavison/delta) for diff
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = false
+    line-numbers = true
+    hyperlinks = true
+# Useful options from
+# https://jvns.ca/blog/2024/02/16/popular-git-config-options/#pull-ff-only-or-pull-rebase-true
 [sequence]
-	editor = rebase-editor
+    editor = rebase-editor
 [status]
-	showUntrackedFiles = all
+    showUntrackedFiles = all
+    submoduleSummary = true
+[init]
+    defaultBranch = main
+[rerere]
+    enabled = true
+    autoUpdate = true
+
+[color "diff"]
+    whitespace = red reverse
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[merge]
+    conflictstyle = zdiff3
+    keepbackup = false
+    tool = vscode
+[diff]
+    colorMoved = default
+    noprefix = true
+    algorithm = histogram
+    submodule = log
+    tool = difftastic
+    colorMoved = plain
+    colorMovedWS = allow-indentation-change
+    renames = true
+
+[rebase]
+    autosquash = true
+    autostash = true
+    missingCommitsCheck = error
+    updateRefs = true
+[commit]
+    verbose = true
+[help]
+    autocorrect = 10
+[submodule]
+    recurse = true
+[credential]
+    helper = osxkeychain
+[fetch]
+    prune = true
+    prunetags = true
+[gpg]
+    format = ssh
+[log]
+    date = iso

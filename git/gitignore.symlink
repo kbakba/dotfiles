@@ -17,11 +17,15 @@ js/c/*
 # Direnv stuff
 .direnv
 .envrc
+.tool-versions
 
 # lefthook
 lefthook-local.yml
 .githooks-local
 
+# local test data
+local_*
+*.local
 
 # OSX generated files
 .DS_Store
