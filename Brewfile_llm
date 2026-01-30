@@ -1,0 +1,3 @@
+brew "copilot"
+brew "claude-code"
+brew "opencode"

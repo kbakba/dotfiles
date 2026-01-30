@@ -1,9 +1,4 @@
-# TODO pazi
-
-tap "homebrew/bundle"
-
 # Brew
-brew "asdf"
 brew "bat"
 brew "coreutils"
 brew "direnv"
@@ -14,6 +9,7 @@ brew "jq"
 brew "m-cli"
 brew "massren"
 brew "micro"
+brew "mise"
 brew "mkcert"
 brew "moreutils"
 brew "ncdu"
@@ -22,9 +18,13 @@ brew "remarshal"
 brew "sift"
 brew "sk"
 brew "ssh-copy-id"
+brew "uv"
 brew "wget"
-brew "zplug"
 brew "zoxide"
+brew "zplug"
+
+tap "nalgeon/howto", "https://github.com/nalgeon/howto"
+brew "nalgeon/howto/howto"
 
 # Cask
 cask "alfred"
@@ -32,7 +32,7 @@ cask "appcleaner"
 cask "dash"
 cask "firefox"
 cask "arc"
-cask "gitup"
+cask "gitup-app"
 cask "google-chrome"
 cask "iina"
 cask "iterm2"
